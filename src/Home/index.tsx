@@ -27,7 +27,7 @@ const Home = () => {
     y: 0
   })
   const handleFacesDetected = ({ faces }: FaceDetectionResult) => {
-    console.log(faces)
+    // console.log(faces)
     const face = faces[0] as any;
 
     if (face) {
@@ -49,18 +49,18 @@ const Home = () => {
       }
       else if (face.leftEyeOpenProbability < 0.2 && face.rightEyeOpenProbability < 0.2) {
         setEmoji(sleepingImg)
-      } else if (face.emotions?.angry > 0.5) { 
-        setEmoji(poutingImg);
- 
+      } else if (face.leftEyeOpenProbability < 0.3 && face.rightEyeOpenProbability < 0.4){
+       
+        setEmoji(poutingImg)
       }
-
+   
       else {
         setEmoji(neutral2)
       }
 
     } else {
       setFaceDetected(false)
-    }
+    }  
 
   }
 
